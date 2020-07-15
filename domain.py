@@ -21,7 +21,7 @@ def similarity_percent(lang):
     return "{}%".format(round(100 - diff,2))
 
 def get_input_text():
-    with open('text.txt') as f:
+    with open('sample-text.txt') as f:
         return f.read()
 
 def get_language(text):
