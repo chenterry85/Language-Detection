@@ -1,10 +1,10 @@
 # Language-Detection
 This is a python language detector using a statistical approach. Given the letter frequency of 15 popular alphabet language systems, we can identify the language of a group of sentences.
 
-#Demo
+# Demo
 
 
-#Installation
+# Installation
 ```bash
 #clone the project
 git clone https://github.com/chenterry85/Language-Detection.git
@@ -13,7 +13,7 @@ git clone https://github.com/chenterry85/Language-Detection.git
 python3 main.py
 ```
 
-#Usage
+# Usage
 
 1. Select input method (File or Textbox)
   - File -> press "Choose file" to select a local file (default: sample-text.txt)
