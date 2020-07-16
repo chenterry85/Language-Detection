@@ -1,5 +1,5 @@
 # Language-Detection
-This is a python language detector using a statistical approach. Given the letter frequency of fifteen alphabet language systems, we can identify the language of a group of sentences.
+This is a language detector written in python using a statistical approach. Given the letter frequency of fifteen alphabet language systems, we can identify the language of a group of sentences. **The longer the paragraphs, the higher the accuracy.**
 
 # Demo
 <img src="https://user-images.githubusercontent.com/60279271/87669663-f8bc3480-c7a0-11ea-8940-4ce45397f04b.gif" width="80%" />
