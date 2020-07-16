@@ -16,13 +16,10 @@ def letter_size(text):
 
 def similarity_percent(lang):
     diff = 0
+
     for i in range(1,len(freq_table) - 1):
         diff += abs(text_freq[i] - lang_freq[lang][i])
-    return "{}%".format(round(100 - diff,2))
-
-def get_input_text():
-    with open('sample-text.txt') as f:
-        return f.read()
+    return "{}%".format(abs(round(100 - diff,2)))
 
 def get_language(text):
     text_freq[:] = []
@@ -41,7 +38,7 @@ def get_language(text):
     for i in LETTERS:
         text_freq.append(text.count(i)/(TEXT_LENGTH * 1.0) * 100)
 
-    #compare each lang's freq to the text's freq
+    #compare each lang's freq to the text's frequency
     min_dif = [10000000,10000000,10000000,10000000,10000000]
     min_dif_lang = ["","","","",""]
     for c in range(1,len(freq_table[0])):
@@ -68,5 +65,6 @@ def get_language(text):
 
     result = ""
     for i in range(len(min_dif_lang)):
-        result += "{}. {} - Similarity: {}\n".format(i + 1,min_dif_lang[i], similarity_percent(min_dif_lang[i]))
+        result += "{}) {} - Similarity: {}\n".format(i + 1,min_dif_lang[i], similarity_percent(min_dif_lang[i]))
+
     return result
