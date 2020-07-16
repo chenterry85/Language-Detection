@@ -27,55 +27,55 @@ class Application(Frame):
 
         current_row += 1
 
-        self.l1 = Label(self, text="  Data Source:       ", pady=2)
+        self.l1 = Label(self, text = "  Data Source:       ", pady = 2)
         self.l1.grid(row = current_row, column = 0)
 
         self.chooser = StringVar()
         self.r1 = Radiobutton(self,
-                            text="File",
-                            variable=self.chooser,
-                            value="1",
-                            selectcolor="#F40088",
-                            command= self.update_input_source)
-        self.r1.grid(row = current_row, column=1, sticky=W)
+                            text = "File",
+                            variable = self.chooser,
+                            value = "1",
+                            selectcolor = "#F40088",
+                            command = self.update_input_source)
+        self.r1.grid(row = current_row, column = 1, sticky = W)
 
 
-        self.b1 = Button(self,text="Choose File", padx = 10, command = self.select_file_from_directory)
-        self.b1.grid(row = current_row,column =2, sticky = W)
+        self.b1 = Button(self,text = "Choose File", padx = 10, command = self.select_file_from_directory)
+        self.b1.grid(row = current_row, column = 2, sticky = W)
 
         self.l2 = Label(self,textvariable=self.selected_filename)
-        self.l2.grid(row = current_row,column =2, columnspan = 1, sticky = E)
+        self.l2.grid(row = current_row,column = 2, columnspan = 1, sticky = E)
 
         current_row += 1
 
         self.r2 = Radiobutton(self,
-                            text="Textbox",
-                            variable=self.chooser,
-                            value="2",
-                            command= self.update_input_source)
-        self.r2.grid(row = current_row, column=1, sticky=W)
+                            text = "Textbox",
+                            variable = self.chooser,
+                            value = "2",
+                            command = self.update_input_source)
+        self.r2.grid(row = current_row, column = 1, sticky = W)
         self.chooser.set("1")
 
         current_row += 1
 
-        self.l3 = Label(self,text="  Text:")
-        self.l3.grid(row=current_row, column=0,sticky = W)
+        self.l3 = Label(self,text = "  Text:")
+        self.l3.grid(row = current_row, column = 0,sticky = W)
 
         self.input = Text(self, width = self.TEXT_BOX_WIDTH, height = self.TEXT_BOX_HEIGHT, wrap = WORD,
                                 bd = 6, bg = "#383838", fg = "#fff", insertbackground = "#FDFD96", insertwidth = 3  , spacing1 = 2)
-        self.input.grid(row=current_row,column = 1, columnspan=2, sticky = W)
+        self.input.grid(row=current_row,column = 1, columnspan = 2, sticky = W)
 
         current_row += 1
 
-        self.b2 = Button(self,text="Scan", padx = 10, command = self.scan_text_from_data_source)
-        self.b2.grid(row = current_row,column =2, columnspan = 1)
+        self.b2 = Button(self,text = "Scan", padx = 10, command = self.scan_text_from_data_source)
+        self.b2.grid(row = current_row,column = 2, columnspan = 1)
 
-        self.b3 = Button(self,text="Clear", padx = 10, command = self.clear_textfield)
-        self.b3.grid(row = current_row, column = 2,columnspan = 1, sticky=E)
+        self.b3 = Button(self,text = "Clear", padx = 10, command = self.clear_textfield)
+        self.b3.grid(row = current_row, column = 2,columnspan = 1, sticky = E)
 
         current_row += 1
 
-        self.space2 = Label(self, text="")
+        self.space2 = Label(self, text = "")
         self.space2.grid(row = current_row,column = 2)
 
         current_row += 1
@@ -84,8 +84,8 @@ class Application(Frame):
         self.l4.grid(row = current_row,column = 0, columnspan = 1, sticky = W)
 
         self.output = Text(self, width = self.TEXT_BOX_WIDTH, height = 5, wrap = WORD, bd = 6)
-        self.output.grid(row=current_row,column = 1, columnspan=2, sticky = W)
-        self.set_text(self.output,"No input")
+        self.output.grid(row = current_row,column = 1, columnspan = 2, sticky = W)
+        self.set_text("No input")
 
     def scan_text_from_data_source(self):
 
@@ -93,7 +93,7 @@ class Application(Frame):
             # data source as local file
 
             content = self.extract_local_file_data()
-            self.set_text(self.output,domain.get_language(content))
+            self.set_text(domain.get_language(content))
         else:
             #data source as textbox
             content = self.input.get(1.0,END)
@@ -128,9 +128,9 @@ class Application(Frame):
     def update_input_source(self):
         self.data_from_file = True if self.chooser.get() == "1" else False
 
-    def set_text(self,label,text):
+    def set_text(self,text):
         self.output.delete(1.0,END)
-        label.insert(END,text)
+        self.output.insert(END,text)
 
     def clear_textfield(self):
         self.input.delete(1.0,END)
