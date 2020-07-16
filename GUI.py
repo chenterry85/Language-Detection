@@ -1,6 +1,8 @@
 from tkinter import *
+from tkinter import messagebox
 from tkinter.filedialog import askopenfilename
 import domain
+import os
 
 class Application(Frame):
 
@@ -12,8 +14,9 @@ class Application(Frame):
 
     def create_widgets(self):
         self.data_from_file = True
-        self.selected_file = StringVar()
-        self.selected_file.set("sample-text.txt")
+        self.selected_filename = StringVar()
+        self.selected_filename.set("sample-text.txt")
+        self.selected_filepath = "sample-text.txt"
         self.TEXT_BOX_WIDTH = 50
         self.TEXT_BOX_HEIGHT = 10
 
@@ -40,7 +43,7 @@ class Application(Frame):
         self.b1 = Button(self,text="Choose File", padx = 10, command = self.select_file_from_directory)
         self.b1.grid(row = current_row,column =2, sticky = W)
 
-        self.l2 = Label(self,textvariable=self.selected_file)
+        self.l2 = Label(self,textvariable=self.selected_filename)
         self.l2.grid(row = current_row,column =2, columnspan = 1, sticky = E)
 
         current_row += 1
@@ -101,19 +104,26 @@ class Application(Frame):
 
     def select_file_from_directory(self):
         file_types = [('Text files', '*.txt *.rtf')]
-        filename = askopenfilename(filetypes = file_types)
-        if filename:
-            self.selected_file.set(filename)
-        else:
-            # filename contain empty string
-            messagebox.showwarning(title="Warning", message="Selected file is empty")
+        filepath = askopenfilename(filetypes = file_types)
 
-            print('Empty File')
+        if os.path.getsize(filepath) <= 220:
+            #empty file
+            messagebox.showwarning(title="Warning", message="Selected file is empty!")
+        else:
+            #valid file
+            self.selected_filepath = filepath
+            self.selected_filename.set(self.extract_filename_from_filepath(filepath))
+
 
     def extract_local_file_data(self):
-        filepath = self.selected_file.get()
+        filepath = self.selected_filepath
         with open(filepath, 'rt') as f:
             return f.read()
+
+    def extract_filename_from_filepath(self, path):
+        start_index = path.rindex("/") + 1
+        filename = path[start_index:]
+        return filename
 
     def update_input_source(self):
         self.data_from_file = True if self.chooser.get() == "1" else False
