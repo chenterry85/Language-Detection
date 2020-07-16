@@ -22,3 +22,5 @@ python3 main.py
   - Textbox → Enter paragraph in the textbox area
 
 2. Press "Scan" to output the 5 potential languages
+
+<img src="https://user-images.githubusercontent.com/60279271/87670397-3a011400-c7a2-11ea-9a2f-69cacec4b494.png" width="60%" />
