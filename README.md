@@ -17,8 +17,8 @@ python3 main.py
 
 # Usage
 
-1. Select input method (File or Textbox)
-  - File → press "Choose file" to select a local file (default: sample-text.txt)
-  - Textbox → Enter paragraph in the textbox area
+1. Select **input method** (File or Textbox)
+  - **File** → press "Choose file" to select a local file (default: sample-text.txt)
+  - **Textbox** → Enter paragraph in the textbox area
 
-2. Press "Scan" to output the 5 potential languages
+2. Press **"Scan"** to output the 5 potential languages
